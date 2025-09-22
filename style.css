@@ -1,0 +1,217 @@
+/* ===== Global Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background:  url('images/download1.jpg') no-repeat center center fixed;
+  color: #2c0ac7;
+  line-height: 1.6;
+}
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1202ec;
+  color: #fff;
+  padding: 15px 30px;
+}
+.user-initials {
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+header .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.search-bar {
+  display: flex;
+  gap: 5px;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  width: 220px;
+}
+
+.search-bar button {
+  background: #3006eb;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.user-links a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.user-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Navigation ===== */
+nav {
+  background: #1405e4;
+  padding: 12px 20px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #2e0de9;
+}
+
+/* ===== Banner ===== */
+.banner {
+  background: #350ee0;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+  font-size: 1.5rem;
+  margin: 20px 0;
+  border-radius: 5px;
+}
+
+/* ===== Product & Support Sections ===== */
+.products-section {
+  padding: 20px 40px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(6, 2, 241, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.price {
+  color: #e91e63;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* ===== Auth Pages (Login & Register) ===== */
+.auth-container {
+  max-width: 400px;
+  background: #fff;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(29, 5, 241, 0.1);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 20px;
+}
+
+.auth-container label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  background: #3b03d6;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.auth-container button:hover {
+  background: #0729ec;
+}
+
+.auth-footer {
+  margin-top: 15px;
+}
+
+
+footer {
+  background: #2502ec;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #fafafc;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
