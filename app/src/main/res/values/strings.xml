@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TechStoreApp</string>
+    <string name="logo">Logo</string>
+    <string name="techstore">TechStore</string>
+    <string name="login">Login</string>
+    <string name="cart">Cart</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
