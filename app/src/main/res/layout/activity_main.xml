@@ -1,76 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#f8fafc"
-    android:fillViewport="true">
+    android:background="#f8fafc">
 
+    <!-- Header (fixed, not scrollable) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Top Bar -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#2563eb"
-            android:padding="8dp"
-            android:text="Free shipping on orders over $50 | 30-day money-back guarantee"
-            android:textColor="#ffffff"
-            android:textSize="12sp"
-            android:gravity="center" />
-
-        <!-- Header -->
+        <!-- Top Toolbar/Header -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            android:orientation="horizontal"
-            android:padding="12dp"
+            android:layout_height="97dp"
+            android:background="#0123ED"
+            android:elevation="4dp"
             android:gravity="center_vertical"
-            android:elevation="4dp">
+            android:orientation="horizontal"
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/titleTv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:text="TechStore"
+                android:textColor="#FBFFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="#2563eb"
-                android:layout_weight="1" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login"
-                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="#1d4ed8"
+                android:text="@string/login"
                 android:textColor="#ffffff"
-                android:layout_marginEnd="8dp" />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/sign_up"
-                android:textSize="12sp"
+                android:layout_marginEnd="8dp"
                 android:backgroundTint="#16a34a"
+                android:text="@string/sign_up"
                 android:textColor="#ffffff"
-                android:layout_marginEnd="8dp" />
+                android:textSize="12sp" />
 
             <ImageView
                 android:id="@+id/cart_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/tonny"
-                android:contentDescription="@string/cart" />
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/cart"
+                android:src="@drawable/cart_icon" />
+
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#3b03d6"
+                android:padding="8dp"
+                android:text="Logout"
+                android:textColor="#FFFFFF"
+                android:visibility="gone" />
         </LinearLayout>
 
-        <!-- Navigation Bar -->
+        <!-- Navigation Bar (still fixed) -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,20 +86,15 @@
                 android:gravity="center_vertical">
 
                 <Button
+                    android:id="@+id/btn_accessories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"
+                    android:text="Accessories"
                     android:textColor="#ffffff"
                     android:background="@android:color/transparent" />
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Deals"
-                    android:textColor="#ffffff"
-                    android:background="@android:color/transparent" />
-
-                <Button
+                    android:id="@+id/btn_laptops"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Laptops"
@@ -105,6 +102,7 @@
                     android:background="@android:color/transparent" />
 
                 <Button
+                    android:id="@+id/btn_smartphones"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Smartphones"
@@ -112,253 +110,389 @@
                     android:background="@android:color/transparent" />
 
                 <Button
+                    android:id="@+id/btn_deals"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Accessories"
+                    android:text="Deals"
+                    android:textColor="#ffffff"
+                    android:background="@android:color/transparent" />
+
+                <Button
+                    android:id="@+id/btn_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
                     android:textColor="#ffffff"
                     android:background="@android:color/transparent" />
 
             </LinearLayout>
         </HorizontalScrollView>
+    </LinearLayout>
 
-        <!-- Hero Banner -->
-        <FrameLayout
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
+            <!-- Hero Banner -->
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/download1"
-                android:contentDescription="Hero Banner" />
+                android:layout_height="200dp">
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/download1"
+                    android:contentDescription="Hero Banner" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="#80000000"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cutting-Edge Technology for Everyday Life"
+                        android:textColor="#ffffff"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_marginBottom="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Discover the latest gadgets and tech innovations."
+                        android:textColor="#ffffff"
+                        android:textSize="14sp"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shop Latest Deals"
+                        android:backgroundTint="#2563eb"
+                        android:textColor="#ffffff"
+                        android:id="@+id/btn_shop_deals"/>
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Featured Products GridLayout -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Featured Products"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_margin="16dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true"
+                android:padding="8dp">
+
+                <!-- All 6 products as in your previous code -->
+                <!-- Product 1 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product1"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gaming Laptop GTX 3060"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Cart"
+                            android:backgroundTint="#2563eb"
+                            android:textColor="#fff"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Product 2 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product5"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="iPhone 15 Pro Max"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Cart"
+                            android:backgroundTint="#2563eb"
+                            android:textColor="#fff"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Product 3 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product2"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wireless EarPods"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Cart"
+                            android:backgroundTint="#2563eb"
+                            android:textColor="#fff"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Product 4 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product3"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Smartwatch Pro 2025"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Cart"
+                            android:backgroundTint="#2563eb"
+                            android:textColor="#fff"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Product 5 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product5_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product6"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gaming Mouse Pro"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add to Cart"
+                            android:backgroundTint="#2563eb"
+                            android:textColor="#fff"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Product 6 -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/product6_new"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/product7"
+                            android:contentDescription="Product" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wireless Keyboard"
+                            android:textStyle="bold"
+                            android:padding="8dp"
+                            android:textColor="#111111" />
+
+                        <Button
+                            android:id="@+id/addToCart6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#2563eb"
+                            android:paddingLeft="8dp"
+                            android:paddingBottom="8dp"
+                            android:text="Add to Cart"
+                            android:textColor="#fff" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
+
+            <!-- Free Shipping Banner -->
+            <TextView
+                android:id="@+id/freeShippingBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2563eb"
+                android:padding="10dp"
+                android:text="🚚 Free Shipping on Orders Over $50!"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Footer -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#80000000"
+                android:background="#1f2937"
                 android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cutting-Edge Technology for Everyday Life"
-                    android:textColor="#ffffff"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Discover the latest gadgets and tech innovations."
-                    android:textColor="#ffffff"
-                    android:textSize="14sp"
-                    android:gravity="center"
-                    android:layout_marginBottom="12dp" />
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Shop Latest Deals"
-                    android:backgroundTint="#2563eb"
-                    android:textColor="#ffffff" />
+                    android:text="© 2025 TechStore. All rights reserved."
+                    android:textColor="#9ca3af"
+                    android:textSize="12sp"
+                    android:gravity="center" />
             </LinearLayout>
-        </FrameLayout>
 
-        <!-- Featured Products -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Featured Products"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_margin="16dp" />
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:alignmentMode="alignMargins"
-            android:useDefaultMargins="true"
-            android:padding="8dp">
-
-            <!-- Product 1 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/product1"
-                        android:contentDescription="Product" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Gaming Laptop GTX 3060"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="#111111" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$1299"
-                        android:textColor="#2563eb"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Product 2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/product5"
-                        android:contentDescription="Product" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="iPhone 15 Pro Max"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="#111111" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$1199"
-                        android:textColor="#2563eb"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Product 3 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/product2"
-                        android:contentDescription="Product" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wireless EarPods"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="#111111" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$199"
-                        android:textColor="#2563eb"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Product 4 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:layout_margin="8dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/product3"
-                        android:contentDescription="Product" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Smartwatch Pro 2025"
-                        android:textStyle="bold"
-                        android:padding="8dp"
-                        android:textColor="#111111" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$349"
-                        android:textColor="#2563eb"
-                        android:paddingLeft="8dp"
-                        android:paddingBottom="8dp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </GridLayout>
-
-        <!-- Footer -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#1f2937"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="© 2025 TechStore. All rights reserved."
-                android:textColor="#9ca3af"
-                android:textSize="12sp"
-                android:gravity="center" />
         </LinearLayout>
+    </ScrollView>
 
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

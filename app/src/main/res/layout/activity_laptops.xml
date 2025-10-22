@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8fafc">
+
+    <!-- Toolbar with Back Button -->
+
+    <!-- Scrollable Product Section -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2563eb"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleTextColor="#FFFFFF" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="#2563eb"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="333dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="         Tech Store"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="31dp"
+                    android:layout_height="31dp"
+                    android:contentDescription="Cart"
+                    android:src="@drawable/cart_icon" />
+            </LinearLayout>
+
+            <!-- Page Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Laptops"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="#1e3a8a"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Grid of Laptops -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:useDefaultMargins="true">
+
+                <!-- Laptop 1 -->
+                <LinearLayout
+                    android:id="@+id/laptop1_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop1" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Dell Inspiron 15"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$699"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 2 -->
+                <LinearLayout
+                    android:id="@+id/laptop2_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HP Pavilion 14"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$649"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/laptop3_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop3" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lenovo IdeaPad 5"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$599"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 4 -->
+                <LinearLayout
+                    android:id="@+id/laptop4_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Asus VivoBook 15"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$629"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 5 -->
+                <LinearLayout
+                    android:id="@+id/laptop5_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop5" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acer Aspire 7"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$699"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 6 -->
+                <LinearLayout
+                    android:id="@+id/laptop6_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop6" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MacBook Air M1"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$999"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 7 -->
+                <LinearLayout
+                    android:id="@+id/laptop7_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop7" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MacBook Pro 14”"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$1699"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 8 -->
+                <LinearLayout
+                    android:id="@+id/laptop8_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop8" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Surface Laptop 4"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$1099"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 9 -->
+                <LinearLayout
+                    android:id="@+id/laptop9_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop9" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Razer Blade 15"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$1899"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+
+                <!-- Laptop 10 -->
+                <LinearLayout
+                    android:id="@+id/laptop10_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/laptop10" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alienware m15 R6"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$2099"
+                        android:textColor="#2563eb" />
+                </LinearLayout>
+            </GridLayout>
+
+            <!-- Footer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#086DF6"
+                android:padding="16dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="© 2025 Tech Store. All rights reserved."
+                    android:textColor="#050505"
+                    android:textSize="12sp"
+                    android:gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

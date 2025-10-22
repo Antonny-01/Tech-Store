@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8fafc">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="#2563eb"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleTextColor="#2563eb" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:background="#2563eb"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tech Store"
+                    android:textColor="#fff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/cart_icon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/cart_icon"
+                    android:contentDescription="Cart" />
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Smartphones"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#1e3a8a"
+                android:gravity="center"
+                android:layout_marginVertical="12dp"/>
+
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:useDefaultMargins="true">
+
+
+                <LinearLayout
+                    android:id="@+id/phone1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/iphone15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="iPhone 15"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$999"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/phone2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/iphone15pro" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="iPhone 15 Pro"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$1,199"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/phone3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/galaxys23" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Samsung Galaxy S23"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$899"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 4 -->
+                <LinearLayout
+                    android:id="@+id/phone4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pixel8" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Google Pixel 8"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$799"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 5 -->
+                <LinearLayout
+                    android:id="@+id/phone5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/oneplus12" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="OnePlus 12"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$749"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 6 -->
+                <LinearLayout
+                    android:id="@+id/phone6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/xiaomi14" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Xiaomi 14"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$699"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 7 -->
+                <LinearLayout
+                    android:id="@+id/phone7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/sony1v" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sony Xperia 1 V"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$949"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 8 -->
+                <LinearLayout
+                    android:id="@+id/phone8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/huaweip60" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Huawei P60 Pro"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$899"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 9 -->
+                <LinearLayout
+                    android:id="@+id/phone9"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/motorolaedge40" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Motorola Edge 40"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$599"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+                <!-- Smartphone 10 -->
+                <LinearLayout
+                    android:id="@+id/phone10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:orientation="vertical"
+                    android:background="#ffffff"
+                    android:elevation="4dp"
+                    android:padding="8dp"
+                    android:layout_margin="6dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/nokiax50" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nokia X50"
+                        android:textStyle="bold"
+                        android:textColor="#111"
+                        android:paddingTop="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$499"
+                        android:textColor="#2563eb"/>
+                </LinearLayout>
+
+            </GridLayout>
+
+            <!-- Footer -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="#1f2937"
+                android:padding="16dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="© 2025 Tech Store. All rights reserved."
+                    android:textColor="#9ca3af"
+                    android:textSize="12sp"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

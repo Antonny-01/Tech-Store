@@ -1,8 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TechStoreApp</string>
-    <string name="logo">Logo</string>
-    <string name="techstore">TechStore</string>
+    <!-- App name -->
+    <string name="app_name">Tech Store</string>
+
+    <!-- Buttons -->
     <string name="login">Login</string>
-    <string name="cart">Cart</string>
     <string name="sign_up">Sign Up</string>
+    <string name="cart">Cart</string>
+
+    <!-- Pages / Sections -->
+    <string name="home">Home</string>
+    <string name="deals">Deals</string>
+    <string name="laptops">Laptops</string>
+    <string name="smartphones">Smartphones</string>
+    <string name="accessories">Accessories</string>
+
+    <!-- Splash screen -->
+    <string name="logo">Tech Store Logo</string>
+    <string name="techstore">Welcome to Tech Store</string>
 </resources>

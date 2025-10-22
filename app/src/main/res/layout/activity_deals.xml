@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f8fafc"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:background="#2563eb"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tech Store"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/cartIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/cart_icon"
+                android:contentDescription="Cart" />
+        </LinearLayout>
+
+        <!-- Page Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hot Deals"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1e3a8a"
+            android:gravity="center"
+            android:layout_marginVertical="12dp"/>
+
+        <!-- Grid of Deals -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:useDefaultMargins="true">
+
+            <!-- Deal 1 -->
+            <LinearLayout
+                android:id="@+id/deal1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Case"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$15.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 2 -->
+            <LinearLayout
+                android:id="@+id/deal2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal2" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wireless Earbuds"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$59.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 3 -->
+            <LinearLayout
+                android:id="@+id/deal3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4K Ultra TV"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$799.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 4 -->
+            <LinearLayout
+                android:id="@+id/deal4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal4" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Android Smartphone"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$349.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 5 -->
+            <LinearLayout
+                android:id="@+id/deal5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal5" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Computer Mouse"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$19.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 6 -->
+            <LinearLayout
+                android:id="@+id/deal6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal6" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone Charger"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$12.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 7 -->
+            <LinearLayout
+                android:id="@+id/deal7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Wireless Speaker"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$89.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 8 -->
+            <LinearLayout
+                android:id="@+id/deal8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal8" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Android Smartphone"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$399.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 9 -->
+            <LinearLayout
+                android:id="@+id/deal9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal9" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nokia Phone"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$129.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+            <!-- Deal 10 -->
+            <LinearLayout
+                android:id="@+id/deal10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:background="#ffffff"
+                android:padding="8dp"
+                android:layout_margin="6dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/deal10" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Smartwatch"
+                    android:textStyle="bold"
+                    android:textColor="#111"
+                    android:paddingTop="4dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="$149.99"
+                    android:textColor="#2563eb"/>
+            </LinearLayout>
+
+        </GridLayout>
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1f2937"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="© 2025 Tech Store. All rights reserved."
+                android:textColor="#9ca3af"
+                android:textSize="12sp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
