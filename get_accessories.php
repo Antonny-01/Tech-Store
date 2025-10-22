@@ -14,7 +14,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         "name" => $row['name'],
         "price" => $row['price'],
         "description" => $row['description'],
-        "image" => "http://172.20.10.3/Tech%20Store/images/" . urlencode($row['image']) 
+        "image" => "http://172.20.10.4/Tech%20Store/images/" . urlencode($row['image']) 
     ];
 }
 
