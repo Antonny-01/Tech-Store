@@ -2,11 +2,13 @@ package com.example.techstoreapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem; // ✅ add this
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar; // ✅ add this
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,6 +28,14 @@ public class AccessoriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accessories);
+
+        // ✅ setup toolbar with back button
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Accessories");
+        }
 
         gridView = findViewById(R.id.gridView);
         productList = new ArrayList<>();
@@ -75,5 +85,15 @@ public class AccessoriesActivity extends AppCompatActivity {
         );
 
         queue.add(request);
+    }
+
+    // ✅ handle toolbar back button click
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // goes back to the previous activity
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
