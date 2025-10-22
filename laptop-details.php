@@ -67,7 +67,7 @@ $laptop = $laptops[$id];
       border-radius: 5px;
     }
     button:hover {
-      background: #0056b3;
+      background: #eaeff5ff;
     }
   </style>
 </head>

@@ -2,65 +2,45 @@
 session_start();
 require 'db.php'; // PDO connection
 
-// STATIC SMARTPHONES (1–15)
-$staticPhones = [
-  1 => ["iPhone 15", 999.00, "images/iphone15.jpg"],
-  2 => ["iPhone 15 Pro", 1199.00, "images/iphone15pro.jpg"],
-  3 => ["Samsung Galaxy S23", 899.00, "images/galaxys23.jpg"],
-  4 => ["Google Pixel 8", 799.00, "images/pixel8.jpg"],
-  5 => ["OnePlus 12", 749.00, "images/oneplus12.jpg"],
-  6 => ["Xiaomi 14", 699.00, "images/xiaomi14.jpg"],
-  7 => ["Sony Xperia 1 V", 949.00, "images/sony1v.jpg"],
-  8 => ["Huawei P60 Pro", 899.00, "images/huaweiP60.jpg"],
-  9 => ["Motorola Edge 40", 599.00, "images/motorolaedge40.jpg"],
-  10 => ["Nokia X50", 499.00, "images/nokiaX50.jpg"],
-  11 => ["Asus ROG Phone 8", 899.00, "images/asusrog8.jpg"],
-  12 => ["Oppo Find X6", 699.00, "images/oppoX6.jpg"],
-  13 => ["iPhone 14", 799.00, "images/iphone14.jpg"],
-  14 => ["Samsung Galaxy S22", 699.00, "images/galaxys22.jpg"],
-  15 => ["Google Pixel 7", 599.00, "images/pixel7.jpg"]
-];
+// Fetch dynamic accessories from DB
+try {
+    $category = 'accessories';
+    $stmt = $conn->prepare("SELECT * FROM products WHERE category = ?");
+    $stmt->execute([$category]);
+    $dynamicProducts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Error loading products: " . $e->getMessage());
+}
 
-// DYNAMIC SMARTPHONES FROM DATABASE (id > 15)
-$stmt = $conn->prepare("SELECT id, name, price, image FROM products WHERE category='smartphone' AND id > 15 ORDER BY id DESC");
-$stmt->execute();
-$dynamicPhones = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// ADD TO CART LOGIC
+// Add to cart logic
 if(isset($_GET['add_id'])){
     $id = $_GET['add_id'];
 
-    // Check static phones first
-    if(isset($staticPhones[$id])){
-        $product = $staticPhones[$id];
-        $name = $product[0];
-        $price = $product[1];
-        $image = $product[2];
-    } else {
-        // Look in DB
-        $stmt = $conn->prepare("SELECT id,name,price,image FROM products WHERE id=?");
-        $stmt->execute([$id]);
-        $dbProduct = $stmt->fetch(PDO::FETCH_ASSOC);
-        if($dbProduct){
-            $name = $dbProduct['name'];
-            $price = $dbProduct['price'];
-            $image = $dbProduct['image'];
-        } else {
-            $name = $price = $image = null;
+    // Find the product in the database
+    $found = false;
+    foreach($dynamicProducts as $dp){
+        if($dp['id'] == $id){
+            $found = true;
+            $name = $dp['name'];
+            $price = $dp['price'];
+            $image = $dp['image']; // Ensure this is the correct filename/path
+            break;
         }
     }
 
-    if($name){
+    if($found){
+        // If product already in cart, increase qty, otherwise add new
         if(isset($_SESSION['cart'][$id])){
             $_SESSION['cart'][$id]['qty']++;
         } else {
             $_SESSION['cart'][$id] = [
                 'name' => $name,
                 'price' => $price,
-                'image' => $image,
+                'image' => "images/$image", // Store full path for cart
                 'qty' => 1
             ];
         }
+
         header("Location: cart.php");
         exit;
     }
@@ -72,15 +52,22 @@ $conn = null;
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Tech Store - Smartphones</title>
+<title>Tech Store - Accessories</title>
 <link rel="stylesheet" href="style.css">
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
 body {
-  background-color: #f8fafc;
+  background-color: #167adeff;
   color: #1f2937;
   line-height: 1.6;
 }
+
 
 
 nav {
@@ -90,7 +77,7 @@ nav {
 }
 
 nav a {
-  color: #1f2937;
+  color: #0d0d0dff;
   text-decoration: none;
   font-weight: 500;
   padding: 12px 0;
@@ -111,7 +98,7 @@ nav a:hover::after {
   left: 0;
   width: 100%;
   height: 3px;
-  background-color: #2563eb;
+  background-color: #0644caff;
   border-radius: 3px 3px 0 0;
 }
 
@@ -173,7 +160,7 @@ nav a:hover::after {
 .product-card img {
   width: 100%;
   height: 160px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 6px;
   margin-bottom: 10px;
 }
@@ -212,7 +199,7 @@ nav a:hover::after {
 }
 
 footer {
-  background-color: #1f2937;
+  background-color: #1b6ddfff;
   color: white;
   text-align: center;
   padding: 40px 5% 20px;
@@ -232,7 +219,10 @@ footer a:hover {
 </head>
 <body>
 
-<header>Tech Store</header>
+<header>
+  <div class="logo">Tech Store</div>
+  <div><a href="cart.php" style="color:#fff; text-decoration:none;">Cart</a></div>
+</header>
 
 <nav>
   <a href="index.php">Home</a>
@@ -240,50 +230,47 @@ footer a:hover {
   <a href="laptops.php">Laptops</a>
   <a href="smartphones.php">Smartphones</a>
   <a href="accessories.php">Accessories</a>
-  <a href="cart.php">Cart</a>
+  <a href="support.php">Support</a>
 </nav>
 
-<div class="banner">Smartphones On Sale</div>
+<div class="banner">Accessories On Sale</div>
 
 <section class="products-section">
-<div class="section-title">Hot Smartphone Deals</div>
-<div class="product-grid">
+  <div class="section-title">Hot Accessories Deals</div>
+  <div class="product-grid">
 
-<?php
-// STATIC PHONES
-foreach($staticPhones as $id => $phone){
-    echo "<div class='product-card'>
-        <a href='smartphones.php?add_id=$id'>
-            <img src='{$phone[2]}' alt='{$phone[0]}'>
-            <div class='product-title'>{$phone[0]}</div>
-            <div class='price'>\${$phone[1]}</div>
-        </a>
-        <form method='get' action='smartphones.php'>
-            <input type='hidden' name='add_id' value='$id'>
-            <button type='submit'>Buy</button>
-        </form>
-    </div>";
-}
+  <?php
+  // Static accessories (optional)
+  $staticProducts = [
+      // Example: ["USB Cable", "usb-cable.jpg", 9.99, 101]
+  ];
+  foreach($staticProducts as $sp){
+      echo "<div class='product-card'>
+              <img src='images/{$sp[1]}' alt='{$sp[0]}'>
+              <div class='product-title'>{$sp[0]}</div>
+              <div class='price'>\$".number_format($sp[2],2)."</div>
+              <form method='get' action='accessories.php'>
+                  <input type='hidden' name='add_id' value='{$sp[3]}'>
+                  <button type='submit'>Buy</button>
+              </form>
+            </div>";
+  }
 
-// DYNAMIC PHONES
-if($dynamicPhones){
-    foreach($dynamicPhones as $row){
-        echo "<div class='product-card'>
-            <a href='smartphones.php?add_id={$row['id']}'>
-                <img src='{$row['image']}' alt='{$row['name']}'>
-                <div class='product-title'>{$row['name']}</div>
-                <div class='price'>\${$row['price']}</div>
-            </a>
-            <form method='get' action='smartphones.php'>
-                <input type='hidden' name='add_id' value='{$row['id']}'>
-                <button type='submit'>Buy</button>
-            </form>
-        </div>";
-    }
-}
-?>
+  // Dynamic products
+  foreach($dynamicProducts as $dp){
+      echo "<div class='product-card'>
+              <img src='images/{$dp['image']}' alt='{$dp['name']}'>
+              <div class='product-title'>{$dp['name']}</div>
+              <div class='price'>\$".number_format($dp['price'],2)."</div>
+              <form method='get' action='accessories.php'>
+                  <input type='hidden' name='add_id' value='{$dp['id']}'>
+                  <button type='submit'>Buy</button>
+              </form>
+            </div>";
+  }
+  ?>
 
-</div>
+  </div>
 </section>
 
 <footer>

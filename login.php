@@ -1,40 +1,49 @@
 <?php
 session_start();
-require 'db.php'; // database connection
+require 'db.php'; // PDO connection
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
+header('Content-Type: application/json'); // always return JSON
 
-    // Check if email exists
-    $stmt = $conn->prepare("SELECT id, fullname, password FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+$response = array("success" => false, "message" => "", "fullname" => "");
 
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($id, $fullname, $hashed_password);
-        $stmt->fetch();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = trim($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
 
-        // Verify password
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['user_id'] = $id;
-            $_SESSION['user_name'] = $fullname;
-
-            // Generate initials (first letters of first and second name)
-            $names = explode(" ", $fullname);
-            $initials = strtoupper(substr($names[0], 0, 1) . substr($names[1] ?? "", 0, 1));
-            $_SESSION['initials'] = $initials;
-
-            header("Location: index.php"); // Redirect after login
-            exit;
-        } else {
-            echo "Incorrect password!";
-        }
-    } else {
-        echo "Email not registered!";
+    if (empty($email) || empty($password)) {
+        $response['message'] = "Email and password are required";
+        echo json_encode($response);
+        exit;
     }
-    $stmt->close();
+
+    try {
+        // Fetch user
+        $stmt = $conn->prepare("SELECT id, fullname, password FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_name'] = $user['fullname'];
+
+            // Generate initials
+            $names = explode(" ", $user['fullname']);
+            $_SESSION['initials'] = strtoupper(substr($names[0],0,1) . substr($names[1] ?? "",0,1));
+
+            $response['success'] = true;
+            $response['message'] = "Login successful";
+            $response['fullname'] = $user['fullname'];
+        } else {
+            $response['message'] = "Invalid email or password";
+        }
+
+    } catch (PDOException $e) {
+        $response['message'] = "Database error: " . $e->getMessage();
+    }
+
+} else {
+    $response['message'] = "Invalid request method";
 }
-$conn->close();
+
+echo json_encode($response);
 ?>

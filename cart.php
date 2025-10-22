@@ -1,156 +1,120 @@
 <?php
 session_start();
 
-
-$laptops = [
-  1 => ["Dell Inspiron 15", "$699.00", "images/laptop1.jpg"],
-  2 => ["HP Pavilion 14", "$649.00", "images/laptop2.jpg"],
-  3 => ["Lenovo IdeaPad 5", "$599.00", "images/laptop3.jpg"],
-  4 => ["Asus VivoBook 15", "$629.00", "images/laptop4.jpg"],
-  5 => ["Acer Aspire 7", "$699.00", "images/laptop5.jpg"],
-  6 => ["Apple MacBook Air M1", "$999.00", "images/laptop6.jpg"],
-  7 => ["Apple MacBook Pro 14\"", "$1,699.00", "images/laptop7.jpg"],
-  8 => ["Microsoft Surface Laptop 4", "$1,099.00", "images/laptop8.jpg"],
-  9 => ["Razer Blade 15 Gaming", "$1,899.00", "images/laptop9.jpg"],
-  10 => ["Alienware m15 R6", "$2,099.00", "images/laptop10.jpg"],
-  11 => ["Samsung Galaxy Book Pro", "$1,149.00", "images/laptop11.jpg"],
-  12 => ["Huawei MateBook D15", "$749.00", "images/laptop12.jpg"],
-  13 => ["MSI GF65 Thin", "$1,099.00", "images/laptop13.jpg"],
-  14 => ["Gigabyte Aorus 15", "$1,299.00", "images/laptop14.jpg"],
-  15 => ["Chromebook Flex 5", "$429.00", "images/laptop15.jpg"],
-];
-
-
-
-if (isset($_GET['action'])) {
-    $id = $_GET['id'] ?? null;
-
-    switch ($_GET['action']) {
-        case "add":
-            if ($id && isset($laptops[$id])) {
-                if (!isset($_SESSION['cart'][$id])) {
-                    $_SESSION['cart'][$id] = ["qty" => 1];
-                } else {
-                    $_SESSION['cart'][$id]["qty"]++;
-                }
-            }
-            break;
-
-        case "remove":
-            if ($id && isset($_SESSION['cart'][$id])) {
-                unset($_SESSION['cart'][$id]);
-            }
-            break;
-
-        case "clear":
-            unset($_SESSION['cart']);
-            break;
-    }
-
+// Remove or clear items
+if(isset($_GET['remove_id'])){
+    unset($_SESSION['cart'][$_GET['remove_id']]);
     header("Location: cart.php");
     exit;
 }
+if(isset($_GET['clear'])){
+    unset($_SESSION['cart']);
+    header("Location: cart.php");
+    exit;
+}
+
+$grandTotal = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Shopping Cart - Tech Store</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-      text-align: center;
-      padding: 10px;
-    }
-    th {
-      background: #f4f4f4;
-    }
-    img {
-      width: 100px;
-    }
-    .btn {
-      padding: 8px 15px;
-      border: none;
-      color: #fff;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .btn-remove {
-      background: red;
-    }
-    .btn-clear {
-      background: orange;
-    }
-    .btn-checkout {
-      background: green;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Your Cart - Tech Store</title>
+<link rel="stylesheet" href="style.css">
+<style>
+body {font-family: Arial, sans-serif; background:#f5f5f5; margin:0; padding:0;}
+nav {background:#333; padding:10px 20px; display:flex; justify-content:space-between; align-items:center;}
+nav a {color:#fff; margin-right:15px; text-decoration:none;}
+nav a:hover { text-decoration:underline; }
+
+.nav-left, .nav-right {display:flex; align-items:center;}
+
+.container {max-width:1200px; margin:30px auto; padding:0 20px;}
+.cart-card {background:#fff; display:flex; align-items:center; padding:15px; margin-bottom:15px; border-radius:5px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.cart-card img {width:120px; height:auto; margin-right:20px; border:1px solid #ddd; border-radius:5px;}
+.cart-details {flex:1;}
+.cart-details h3 {margin:0 0 10px 0;}
+.cart-details .price {color:green; font-weight:bold; margin-bottom:5px;}
+.cart-details .qty {margin-bottom:5px;}
+.cart-actions {text-align:center;}
+.cart-actions a {display:inline-block; padding:8px 15px; margin:3px 0; border-radius:4px; color:#fff; text-decoration:none;}
+.btn-remove { background:red; }
+.btn-clear { background:orange; }
+.btn-checkout { background:green; font-size:16px; padding:10px 20px; }
+
+.total-section {text-align:right; font-size:20px; margin-top:20px; margin-bottom:20px;}
+.empty-cart {text-align:center; font-size:20px; margin-top:50px;}
+
+.btn-login, .btn-signup {background:#2563eb; color:white; padding:8px 15px; border-radius:4px; text-decoration:none; margin-left:10px;}
+.btn-login:hover, .btn-signup:hover {background:#1d4ed8;}
+</style>
 </head>
 <body>
 
-<header>
-  <div class="logo">Tech Store</div>
-</header>
+<header>Tech Store</header>
 
+<!-- Navigation -->
 <nav>
-  <a href="index.php">Home</a>
-  <a href="laptops.php">Laptops</a>
-  <a href="cart.php">Cart</a>
+    <div class="nav-left">
+        <a href="index.php">Home</a>
+        <a href="laptops.php">Laptops</a>
+        <a href="smartphones.php">Smartphones</a>
+        <a href="accessories.php">Accessories</a>
+        <a href="deals.php" class="active">Deals</a>
+    </div>
+    <div class="nav-right">
+        <?php if(isset($_SESSION['initials'])): ?>
+            <span style="color:white; font-weight:bold;">Hello, <?= $_SESSION['initials'] ?></span>
+            <a class="btn-login" href="logout.php">Logout</a>
+        <?php else: ?>
+            <a class="btn-login" href="login.html">Login</a>
+            <a class="btn-signup" href="signup.html">Signup</a>
+        <?php endif; ?>
+    </div>
 </nav>
 
+<div class="container">
 <h2>Your Shopping Cart</h2>
 
-<?php if (!empty($_SESSION['cart'])): ?>
-  <table>
-    <tr>
-      <th>Image</th>
-      <th>products</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Total</th>
-      <th>Action</th>
-    </tr>
-    <?php
-    $grandTotal = 0;
-    foreach ($_SESSION['cart'] as $id => $item):
-      $name = $laptops[$id][0];
-      $price = floatval(str_replace(['$', ','], '', $laptops[$id][1]));
-      $image = $laptops[$id][2];
-      $qty = $item['qty'];
-      $total = $price * $qty;
-      $grandTotal += $total;
-    ?>
-    <tr>
-      <td><img src="<?php echo $image; ?>" alt="<?php echo $name; ?>"></td>
-      <td><?php echo $name; ?></td>
-      <td><?php echo $laptops[$id][1]; ?></td>
-      <td><?php echo $qty; ?></td>
-      <td>$<?php echo number_format($total, 2); ?></td>
-      <td><a class="btn btn-remove" href="cart.php?action=remove&id=<?php echo $id; ?>">Remove</a></td>
-    </tr>
-    <?php endforeach; ?>
-    <tr>
-      <td colspan="4"><strong>Grand Total</strong></td>
-      <td colspan="2"><strong>$<?php echo number_format($grandTotal, 2); ?></strong></td>
-    </tr>
-  </table>
+<?php if(!empty($_SESSION['cart'])): ?>
 
-  <a class="btn btn-clear" href="cart.php?action=clear">Clear Cart</a>
-  <a class="btn btn-checkout" href="checkout.php">Proceed to Checkout</a>
+<?php foreach($_SESSION['cart'] as $id => $item):
+    $total = $item['price'] * $item['qty'];
+    $grandTotal += $total;
+?>
+<div class="cart-card">
+    <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>">
+    <div class="cart-details">
+        <h3><?= $item['name'] ?></h3>
+        <div class="price">$<?= number_format($item['price'],2) ?></div>
+        <div class="qty">Quantity: <?= $item['qty'] ?></div>
+        <div>Total: $<?= number_format($total,2) ?></div>
+    </div>
+    <div class="cart-actions">
+        <a class="btn-remove" href="cart.php?remove_id=<?= $id ?>">Remove</a>
+    </div>
+</div>
+<?php endforeach; ?>
+
+<div class="total-section">
+    <strong>Grand Total: $<?= number_format($grandTotal,2) ?></strong>
+</div>
+
+<div class="cart-actions">
+    <a class="btn-clear" href="cart.php?clear=1">Clear Cart</a>
+    <?php if(isset($_SESSION['initials'])): ?>
+        <a class="btn-checkout" href="checkout.php">Proceed to Checkout</a>
+    <?php else: ?>
+        <a class="btn-checkout" href="javascript:void(0);" onclick="alert('Please login or signup before checking out!')">Proceed to Checkout</a>
+    <?php endif; ?>
+</div>
 
 <?php else: ?>
-  <p>Your cart is empty.</p>
+<div class="empty-cart">
+    <p>Your cart is empty.</p>
+</div>
 <?php endif; ?>
+</div>
 
 </body>
 </html>
