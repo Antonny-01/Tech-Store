@@ -61,6 +61,7 @@ nav a:hover { text-decoration:underline; }
         <a href="smartphones.php">Smartphones</a>
         <a href="accessories.php">Accessories</a>
         <a href="deals.php" class="active">Deals</a>
+        
     </div>
     <div class="nav-right">
         <?php if(isset($_SESSION['initials'])): ?>
@@ -68,7 +69,7 @@ nav a:hover { text-decoration:underline; }
             <a class="btn-login" href="logout.php">Logout</a>
         <?php else: ?>
             <a class="btn-login" href="login.html">Login</a>
-            <a class="btn-signup" href="signup.html">Signup</a>
+            <a class="btn-signup" href="signup.php">Signup</a>
         <?php endif; ?>
     </div>
 </nav>

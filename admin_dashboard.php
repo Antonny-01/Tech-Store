@@ -9,25 +9,24 @@ if (!isset($_SESSION['admin_logged_in'])) {
 }
 
 // Functions to get counts
-function getTotalProducts($conn){
+function getTotalProducts($conn) {
     $res = $conn->query("SELECT COUNT(*) as total FROM products");
-    $row = $res->fetch_assoc();
+    $row = $res->fetch(PDO::FETCH_ASSOC);
     return $row['total'];
 }
 
-function getTotalOrders($conn){
+function getTotalOrders($conn) {
     $res = $conn->query("SELECT COUNT(*) as total FROM orders");
-    $row = $res->fetch_assoc();
+    $row = $res->fetch(PDO::FETCH_ASSOC);
     return $row['total'];
 }
 
-function getTotalUsers($conn){
+function getTotalUsers($conn) {
     $res = $conn->query("SELECT COUNT(*) as total FROM users");
-    $row = $res->fetch_assoc();
+    $row = $res->fetch(PDO::FETCH_ASSOC);
     return $row['total'];
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
